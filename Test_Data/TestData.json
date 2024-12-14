@@ -1,0 +1,20 @@
+{
+  "Login_details": [
+    {
+        "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+        "uname": "Admin",
+        "upass": "admin123"
+    },
+
+    {
+        "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+        "uname": "Admin",
+        "upass": "admin123"
+    },
+    {
+        "url": "https://opensource-demo.orangehrmlive.com/web/index.php/auth/login",
+        "uname": "Admin",
+        "upass": "admin123"
+    }
+  ]
+}
