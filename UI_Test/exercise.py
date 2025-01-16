@@ -3,6 +3,7 @@ from selenium.webdriver.common.by import By
 from selenium.common.exceptions import NoSuchElementException, StaleElementReferenceException
 import time
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
 
 # Initialize WebDriver
 driver = webdriver.Edge()
@@ -30,11 +31,15 @@ while True:
                 rows = driver.find_elements(By.XPATH, '//table[@id="example"]/tbody/tr')
 
         # Try to locate the "Next" button
-        next_button = driver.find_element(By.XPATH, '//button[@class="dt-paging-button next" and not(contains(@class, "disabled"))]')
+        next_button = WebDriverWait(driver, 15).until(
+            EC.element_to_be_clickable(
+                (By.XPATH, '//button[@class="dt-paging-button next" and not(contains(@class, "disabled"))]'))
+        )
+        #next_button = driver.find_element(By.XPATH, '//button[@class="dt-paging-button next" and not(contains(@class, "disabled"))]')
         #driver.implicitly_wait(3)
         next_button.click()  # Click the "Next" button to go to the next page
         #driver.implicitly_wait(3)
-        #time.sleep(1)  # Wait for the page to load
+        time.sleep(1)  # Wait for the page to load
     except NoSuchElementException:
         print("Reached the last page or 'Next' button is disabled.")
         break  # Exit the loop if the "Next" button is disabled or not found
